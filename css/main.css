@@ -2632,6 +2632,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #f53f51;
 }
 
+.single-course .details a:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .call-to-action-area .download-button {
     -webkit-box-direction: normal !important;
@@ -2950,7 +2954,7 @@ h6 {
 }
 
 .img{
-	width: 300px;
+	width: 200px;
 	padding: 20px
 }
 
@@ -2966,32 +2970,6 @@ h6 {
 .lang:hover{
 	color: #f53f51;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .contact-container {
 	height: 100vh;
@@ -3063,13 +3041,32 @@ h6 {
 @media (max-width:880px) {
 	.contact-inputs {
 		width: 80vw;
-	}
+}
 
 
 
 
+#loadMoreBtn {
+	transition: .5s;
+	display: flex;
+	align-items: center;
+	padding: 15px 30px;
+	font-size: 16px;
+	color: black;
+	gap: 10px;
+	border: none;
+	border-radius: 50px;
+	background: white;
+	height: 45px;
+	cursor: pointer;
+	margin-bottom: 1.25rem;
+	border: 1px solid white;
+}
 
-
+#loadMoreBtn:hover {
+  	background-color: rgb(245, 66, 76);
+	color: white;
+}
 
 
 
