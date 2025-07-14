@@ -213,12 +213,67 @@ $(document).ready(function(){
         });      
 
 
-
-
-
-
-
-
  });
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll('.active-course-carusel .single-course');
+  const loadMoreBtn = document.createElement('button');
+  loadMoreBtn.id = 'loadMoreBtn';
+  loadMoreBtn.textContent = 'المزيد'; // Or 'تحميل المزيد' if you want Arabic
+
+  // Find the .row that contains .active-course-carusel
+  const rowContainer = document.querySelector('.active-course-carusel').parentNode;
+
+  // Create a wrapper div for the button to force a new line under the row
+  const btnWrapper = document.createElement('div');
+  btnWrapper.style.width = '100%';
+  btnWrapper.style.textAlign = 'center';
+  btnWrapper.style.marginTop = '20px';
+  btnWrapper.appendChild(loadMoreBtn);
+
+  // Insert the button wrapper AFTER the row container (so under books)
+  rowContainer.parentNode.insertBefore(btnWrapper, rowContainer.nextSibling);
+
+  let visibleCount = 6;
+
+  items.forEach((item, i) => {
+    if (i >= visibleCount) item.style.display = 'none';
+  });
+
+  loadMoreBtn.addEventListener('click', () => {
+    let hiddenItems = Array.from(items).filter(item => item.style.display === 'none');
+    for (let i = 0; i < visibleCount && i < hiddenItems.length; i++) {
+      hiddenItems[i].style.display = 'block';
+    }
+    if (hiddenItems.length <= visibleCount) {
+      loadMoreBtn.style.display = 'none';
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
