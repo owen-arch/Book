@@ -3046,11 +3046,12 @@ h6 {
 
 
 
-#loadMoreBtn {
+.loadMoreBtn {
 	transition: .5s;
 	display: flex;
 	align-items: center;
 	padding: 15px 30px;
+	margin-left: 20px;
 	font-size: 16px;
 	color: black;
 	gap: 10px;
@@ -3063,7 +3064,7 @@ h6 {
 	border: 1px solid white;
 }
 
-#loadMoreBtn:hover {
+.loadMoreBtn:hover {
   	background-color: rgb(245, 66, 76);
 	color: white;
 }
