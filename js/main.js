@@ -223,39 +223,43 @@ $(document).ready(function(){
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const items = document.querySelectorAll('.active-course-carusel .single-course');
-  const loadMoreBtn = document.createElement('button');
-  loadMoreBtn.id = 'loadMoreBtn';
-  loadMoreBtn.textContent = 'المزيد'; // Or 'تحميل المزيد' if you want Arabic
+document.addEventListener("DOMContentLoaded", function () {
+  const carousels = document.querySelectorAll('.active-course-carusel');
 
-  // Find the .row that contains .active-course-carusel
-  const rowContainer = document.querySelector('.active-course-carusel').parentNode;
+  carousels.forEach((carousel, index) => {
+    const items = carousel.querySelectorAll('.single-course');
 
-  // Create a wrapper div for the button to force a new line under the row
-  const btnWrapper = document.createElement('div');
-  btnWrapper.style.width = '100%';
-  btnWrapper.style.textAlign = 'center';
-  btnWrapper.style.marginTop = '20px';
-  btnWrapper.appendChild(loadMoreBtn);
+    const loadMoreBtn = document.createElement('button');
+    loadMoreBtn.className = 'loadMoreBtn';
+    loadMoreBtn.textContent = 'المزيد';
 
-  // Insert the button wrapper AFTER the row container (so under books)
-  rowContainer.parentNode.insertBefore(btnWrapper, rowContainer.nextSibling);
+    // Create wrapper for the button
+    const btnWrapper = document.createElement('div');
+    btnWrapper.style.width = '100%';
+    btnWrapper.style.textAlign = 'center';
+    btnWrapper.style.marginTop = '20px';
+    btnWrapper.appendChild(loadMoreBtn);
 
-  let visibleCount = 6;
+    // Insert button after the carousel's row container
+    carousel.parentNode.insertBefore(btnWrapper, carousel.nextSibling);
 
-  items.forEach((item, i) => {
-    if (i >= visibleCount) item.style.display = 'none';
-  });
+    const initialCount = 1;
+    const loadCount = 6;
 
-  loadMoreBtn.addEventListener('click', () => {
-    let hiddenItems = Array.from(items).filter(item => item.style.display === 'none');
-    for (let i = 0; i < visibleCount && i < hiddenItems.length; i++) {
-      hiddenItems[i].style.display = 'block';
-    }
-    if (hiddenItems.length <= visibleCount) {
-      loadMoreBtn.style.display = 'none';
-    }
+    // Hide items except initial
+    items.forEach((item, i) => {
+      if (i >= initialCount) item.style.display = 'none';
+    });
+
+    loadMoreBtn.addEventListener('click', () => {
+      let hiddenItems = Array.from(items).filter(item => item.style.display === 'none');
+      for (let i = 0; i < loadCount && i < hiddenItems.length; i++) {
+        hiddenItems[i].style.display = 'block';
+      }
+      if (hiddenItems.length <= loadCount) {
+        loadMoreBtn.style.display = 'none';
+      }
+    });
   });
 });
 
